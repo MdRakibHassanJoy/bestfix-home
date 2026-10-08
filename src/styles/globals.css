@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================================================
+   BestFix Home — Design Tokens (RGB triplets)
+   Colors auto-adapt in dark mode. No dark: prefix
+   needed for brand colors in components.
+   ================================================ */
+
+@layer base {
+  :root {
+    /* Brand: Craftsman Flame / Terracotta */
+    --color-flame: 234 88 12;          /* #EA580C - vibrant action flame */
+    --color-flame-button: 194 65 12;   /* #C2410C - rich terracotta button */
+    --color-flame-hover: 154 52 10;    /* #9A340A - deep craftsman hover */
+    --color-ember: 180 83 9;           /* #B45309 - warm amber wood tone */
+    --color-charred: 15 23 42;         /* #0F172A - deep architectural midnight ink */
+
+    /* Neutrals: Honey Homes Architectural Plaster & Crisp White System */
+    --color-stone: 250 248 245;        /* #FAF8F5 - warm alabaster / plaster canvas */
+    --color-cloud: 255 255 255;        /* #FFFFFF - crisp pure white cards */
+    --color-iron: 71 85 105;           /* #475569 - warm architectural slate body text */
+    --color-slate: 15 23 42;           /* #0F172A - deep midnight slate anchor */
+    --color-border: 234 230 223;       /* #EAE6DF - subtle warm hairline border */
+
+    /* Semantic */
+    --color-success: 22 163 74;        /* #16A34A - certified emerald */
+    --color-error: 220 38 38;          /* #DC2626 - precision error */
+    --color-warning: 217 119 6;        /* #D97706 - warning amber */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    background-color: rgb(var(--color-stone));
+    color: rgb(var(--color-charred));
+    font-family: var(--font-source-sans), 'Segoe UI', system-ui, sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Prevent iOS Safari 16px input focus auto-zoom */
+  @media (max-width: 639px) {
+    input, textarea, select {
+      font-size: 16px !important;
+    }
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-flame));
+    color: #FFFFFF;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-flame-button));
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    @apply absolute -translate-y-full px-4 py-2 font-body font-semibold z-[100] transition-transform;
+    background-color: rgb(var(--color-flame-button));
+    color: #FFFFFF;
+  }
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
+  }
+  .section-container {
+    @apply max-w-7xl mx-auto;
+  }
+}
